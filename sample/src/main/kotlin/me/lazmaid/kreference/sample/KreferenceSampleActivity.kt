@@ -1,5 +1,8 @@
 package me.lazmaid.kreference.sample
 
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+
 /**
 The MIT License (MIT)
 
@@ -23,6 +26,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
-public class KreferenceSampleActivity  {
+public class KreferenceSampleActivity : AppCompatActivity() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 }

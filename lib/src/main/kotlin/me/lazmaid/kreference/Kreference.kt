@@ -30,11 +30,11 @@ THE SOFTWARE.
 
 public object Kreference {
 
-    fun String(context: Context, default: String = "") : ReadWriteProperty<Any?, String> = PreferenceDelegate(context, default)
-    fun Long(context: Context, default: Long = 0L) : ReadWriteProperty<Any?, Long> = PreferenceDelegate(context, default)
-    fun Int(context: Context, default: Int = 0) : ReadWriteProperty<Any?, Int> = PreferenceDelegate(context, default)
-    fun Float(context: Context, default: Float = 0f) : ReadWriteProperty<Any?, Float> = PreferenceDelegate(context, default)
-    fun Boolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
+    fun asString(context: Context, default: String = "") : ReadWriteProperty<Any?, String> = PreferenceDelegate(context, default)
+    fun asLong(context: Context, default: Long = 0L) : ReadWriteProperty<Any?, Long> = PreferenceDelegate(context, default)
+    fun asInt(context: Context, default: Int = 0) : ReadWriteProperty<Any?, Int> = PreferenceDelegate(context, default)
+    fun asFloat(context: Context, default: Float = 0f) : ReadWriteProperty<Any?, Float> = PreferenceDelegate(context, default)
+    fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
 
     fun clearAll(context: Context) {
         val prefName = context.defaultKreferenceName
@@ -44,6 +44,7 @@ public object Kreference {
     }
 
     private class PreferenceDelegate<T>(context: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
+
         lateinit var appContext: Context
 
         val prefName by lazy {
@@ -81,10 +82,9 @@ public object Kreference {
             }
             this.value = value
             editor.apply()
-
         }
 
-
     }
+
 }
 
