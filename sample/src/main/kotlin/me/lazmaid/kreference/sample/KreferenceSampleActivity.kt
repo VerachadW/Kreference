@@ -1,7 +1,9 @@
 package me.lazmaid.kreference.sample
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import me.lazmaid.kreference.Kreference
 
 /**
 The MIT License (MIT)
@@ -31,4 +33,10 @@ public class KreferenceSampleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+}
+
+class SimplePreference(private val context: Context) {
+    public val name by Kreference.asString(context)
+    public val age by Kreference.asInt(context)
 }
