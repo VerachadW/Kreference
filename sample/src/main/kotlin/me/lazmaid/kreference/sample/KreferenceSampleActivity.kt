@@ -3,7 +3,9 @@ package me.lazmaid.kreference.sample
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import me.lazmaid.kreference.Kreference
+import java.io.File
 
 /**
 The MIT License (MIT)
@@ -30,13 +32,38 @@ THE SOFTWARE.
  **/
 public class KreferenceSampleActivity : AppCompatActivity() {
 
+    private val textView by lazy {
+        findViewById(R.id.textview) as TextView
+    }
+
+    /**
+     * Kreference uses the name of property as the key of preference item. So, you can easily declare
+     * property anywhere you want.
+     */
+    private var prefText by Kreference.asString(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_kreference_sample)
+
+        val message = StringBuilder {
+            prefText = "Hello, Kreference"
+            append("Before Change:\n")
+            append("prefText -> $prefText\n")
+            append("SimplePreference.prefText -> ${SimplePreference(this@KreferenceSampleActivity).prefText}\n")
+            prefText = "Hello, again"
+            append("After Change:\n")
+            append("prefText -> $prefText\n")
+            append("SimplePreference.prefText -> ${SimplePreference(this@KreferenceSampleActivity).prefText}\n")
+        }.toString()
+
+        textView.text = message
+
+    }
+
+    class SimplePreference(private val context: Context) {
+        var prefText by Kreference.asString(context)
     }
 
 }
 
-class SimplePreference(private val context: Context) {
-    public val name by Kreference.asString(context)
-    public val age by Kreference.asInt(context)
-}

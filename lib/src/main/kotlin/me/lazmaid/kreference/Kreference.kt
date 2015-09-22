@@ -43,16 +43,14 @@ public object Kreference {
         editor.apply()
     }
 
-    private class PreferenceDelegate<T>(context: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
-
-        lateinit var appContext: Context
+    private class PreferenceDelegate<T>(appContext: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
 
         val prefName by lazy {
             appContext.defaultKreferenceName
         }
 
-        init {
-            appContext = context.applicationContext
+        protected val sharedPreferences by lazy {
+            appContext.getSharedPreferences(prefName, Context.MODE_PRIVATE)
         }
 
         private var value = defaultValue
@@ -69,7 +67,6 @@ public object Kreference {
             return value
         }
 
-        protected val sharedPreferences: SharedPreferences = appContext.getSharedPreferences(prefName, Context.MODE_PRIVATE)
 
         override fun set(thisRef: Any?, property: PropertyMetadata, value: T) {
             val editor = sharedPreferences.edit()
