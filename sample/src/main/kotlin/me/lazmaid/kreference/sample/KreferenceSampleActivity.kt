@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import me.lazmaid.kreference.Kreference
-import java.io.File
 
 /**
 The MIT License (MIT)

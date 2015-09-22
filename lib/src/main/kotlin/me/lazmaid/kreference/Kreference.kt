@@ -2,6 +2,7 @@ package me.lazmaid.kreference
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.util.Date
 import kotlin.properties.ReadWriteProperty
 
 /**
@@ -35,6 +36,7 @@ public object Kreference {
     fun asInt(context: Context, default: Int = 0) : ReadWriteProperty<Any?, Int> = PreferenceDelegate(context, default)
     fun asFloat(context: Context, default: Float = 0f) : ReadWriteProperty<Any?, Float> = PreferenceDelegate(context, default)
     fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
+    fun asDate(context: Context, default: Date = Date(0)) : ReadWriteProperty<Any?, Date?> = PreferenceDelegate(context, default)
 
     fun clearAll(context: Context) {
         val prefName = context.defaultKreferenceName
@@ -63,6 +65,7 @@ public object Kreference {
                 is Int -> value = sharedPreferences.getInt(property.name, 0) as T
                 is Boolean -> value = sharedPreferences.getBoolean(property.name, false) as T
                 is Long -> value = sharedPreferences.getLong(property.name, 0L) as T
+                is Date -> value = sharedPreferences.getLong(property.name, 0L) as T
             }
             return value
         }
@@ -76,6 +79,7 @@ public object Kreference {
                 is Int -> editor.putInt(property.name, value)
                 is Boolean -> editor.putBoolean(property.name, value)
                 is Long -> editor.putLong(property.name, value)
+                is Date -> editor.putLong(property.name, value.time)
             }
             this.value = value
             editor.apply()
