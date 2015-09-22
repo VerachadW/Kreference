@@ -62,10 +62,13 @@ public object Kreference {
             when (value) {
                 is String -> value = sharedPreferences.getString(property.name, defaultValue as String) as T
                 is Float -> value = sharedPreferences.getFloat(property.name, defaultValue as Float) as T
-                is Int -> value = sharedPreferences.getInt(property.name, 0) as T
-                is Boolean -> value = sharedPreferences.getBoolean(property.name, false) as T
-                is Long -> value = sharedPreferences.getLong(property.name, 0L) as T
-                is Date -> value = sharedPreferences.getLong(property.name, 0L) as T
+                is Int -> value = sharedPreferences.getInt(property.name, defaultValue as Int) as T
+                is Boolean -> value = sharedPreferences.getBoolean(property.name, defaultValue as Boolean) as T
+                is Long -> value = sharedPreferences.getLong(property.name, defaultValue as Long) as T
+                is Date -> {
+                    val timestamp = sharedPreferences.getLong(property.name, 0L)
+                    value = Date(timestamp) as T
+                }
             }
             return value
         }
