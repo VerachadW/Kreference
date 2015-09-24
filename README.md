@@ -1,11 +1,6 @@
 #Kreference
 Preference as Properties for Kotlin Android.
 
-##Installation
-Add this to ```build.gradle```
-
-```compile "com.github.verachadw:kreference:0.1.0"```
-
 ##Overview
 When you want to get/set a String in SharedPreference in Android. You need this bunch of code
 ```kotlin
@@ -56,12 +51,16 @@ Since Kreference used the variable's name as a key of preference item, You can e
 ##Features
     - One line Preference item declaration
     - Null-Safety
-    - Allow default value for preference item e.g. 
-    ```val name = Kreference.asString(context, "Hello, World")```
-    - Support ```Date``` as preference item with ```Kreference.asDate()```
+    - Allow default value for preference item
+    - Support Non-Primitive type e.g. Date
+    
+##Installation
+Add this line to your ```build.gradle```
+
+    compile "com.github.verachadw:kreference:0.2.1"
 
 ##Need more features?
-    Create an issue or send PR to me.
+Create an issue or send PR to me.
 
 ##Licensce
 The MIT License (MIT)
