@@ -1,9 +1,14 @@
 #Kreference
-Simple Android Preference library written in Kotlin.
+Preference as Properties for Kotlin Android.
+
+##Installation
+Add this to ```build.gradle```
+
+```compile "com.github.verachadw:kreference:0.1.0"```
 
 ##Overview
 When you want to get/set a String in SharedPreference in Android. You need this bunch of code
-```
+```kotlin
     object PreferenceHelper {
         fun getMyPrefString(context: Context): String? {
             val preference = context.getSharedPreferences("myPref", Context.MODE_PRIVATE)
@@ -24,8 +29,8 @@ When you want to get/set a String in SharedPreference in Android. You need this 
     PreferenceHelper.setMyPrefString(this, "This is not simple :(")
 ```
 
-A lot of work just to handle 1 item. Is it better if you can write those stuff as one-liner, or even better no need for singleton class declaration? Kreference make that happen for you. Here is how we declare ```myString``` with Kreference.
-```
+A lot of work just to handle 1 item. Is it better if you can write those stuff as one-liner, or even better as a property in class? Kreference make that happen for you. Here is how we declare ```myString``` with Kreference.
+```kotlin
     // Declare in Activity. No need for additional class.
     private val myString by Kreference.asString(this)
     ...
@@ -35,7 +40,7 @@ A lot of work just to handle 1 item. Is it better if you can write those stuff a
 ```
 
 Since Kreference used the variable's name as a key of preference item, You can easily access preference item in different classes by using the same variable name.
- ```
+ ```kotlin
      object MyPref1 {
         val myTime by Kreference.asLong(this)
      }
@@ -49,13 +54,14 @@ Since Kreference used the variable's name as a key of preference item, You can e
  ```
 
 ##Features
-    - One line Preference declaration
+    - One line Preference item declaration
     - Null-Safety
-    - Allow default value for preference item
+    - Allow default value for preference item e.g. 
+    ```val name = Kreference.asString(context, "Hello, World")```
     - Support ```Date``` as preference item with ```Kreference.asDate()```
 
 ##Need more features?
-    Fork it and send PR to me.
+    Create an issue or send PR to me.
 
 ##Licensce
 The MIT License (MIT)
