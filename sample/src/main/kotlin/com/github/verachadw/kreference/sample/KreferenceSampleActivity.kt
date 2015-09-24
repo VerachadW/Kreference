@@ -1,10 +1,11 @@
-package me.lazmaid.kreference.sample
+package com.github.verachadw.kreference.sample
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import me.lazmaid.kreference.Kreference
+import com.github.verachadw.kreference.Kreference
+import com.github.verachadw.kreference.sample.R
 
 /**
 The MIT License (MIT)

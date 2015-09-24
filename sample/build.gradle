@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "me.lazmaid.kreference.sample"
+        applicationId "com.github.verachadw.kreference.sample"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

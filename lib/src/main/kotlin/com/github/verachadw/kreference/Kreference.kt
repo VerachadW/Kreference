@@ -1,4 +1,4 @@
-package me.lazmaid.kreference
+package com.github.verachadw.kreference
 
 import android.content.Context
 import android.content.SharedPreferences
