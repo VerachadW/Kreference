@@ -9,12 +9,12 @@ ext {
     libraryName = 'Kreference'
     artifact = 'kreference'
 
-    libraryDescription = 'Simple Preference for Android written in Kotlin'
+    libraryDescription = 'Preference as Properties for Kotlin Android'
 
     siteUrl = 'https://github.com/VerachadW/Kreference'
     gitUrl = 'https://github.com/VerachadW/Kreference.git'
 
-    libraryVersion = '0.2.0'
+    libraryVersion = '0.2.1'
 
     developerId = 'verachadw'
     developerName = 'Verachad Wongsawangtham'
