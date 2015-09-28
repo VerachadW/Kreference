@@ -47,11 +47,11 @@ public object Kreference {
 
     private class PreferenceDelegate<T>(appContext: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
 
-        val prefName by lazy {
+        val prefName by lazy(LazyThreadSafetyMode.NONE) {
             appContext.defaultKreferenceName
         }
 
-        protected val sharedPreferences by lazy {
+        protected val sharedPreferences by lazy(LazyThreadSafetyMode.NONE) {
             appContext.getSharedPreferences(prefName, Context.MODE_PRIVATE)
         }
 
