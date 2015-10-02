@@ -37,6 +37,7 @@ public object Kreference {
     fun asFloat(context: Context, default: Float = 0f) : ReadWriteProperty<Any?, Float> = PreferenceDelegate(context, default)
     fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
     fun asDate(context: Context, default: Date = Date(0)) : ReadWriteProperty<Any?, Date?> = PreferenceDelegate(context, default)
+    fun asStringList(context: Context, default: Iterable<String>) : ReadWriteProperty<Any?, Iterable<String>> = PreferenceDelegate(context, default)
 
     fun clearAll(context: Context) {
         val prefName = context.defaultKreferenceName
@@ -57,7 +58,7 @@ public object Kreference {
 
         private var value = defaultValue
 
-        override fun get(thisRef: Any?, property: PropertyMetadata): T {
+        operator override fun get(thisRef: Any?, property: PropertyMetadata): T {
             @Suppress("unchecked_cast")
             when (value) {
                 is String -> value = sharedPreferences.getString(property.name, defaultValue as String) as T
@@ -73,8 +74,7 @@ public object Kreference {
             return value
         }
 
-
-        override fun set(thisRef: Any?, property: PropertyMetadata, value: T) {
+        operator override fun set(thisRef: Any?, property: PropertyMetadata, value: T) {
             val editor = sharedPreferences.edit()
             when (value) {
                 is String -> editor.putString(property.name, value)
