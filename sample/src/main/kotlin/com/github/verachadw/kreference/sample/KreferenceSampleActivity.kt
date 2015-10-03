@@ -57,6 +57,15 @@ public class KreferenceSampleActivity : AppCompatActivity() {
             append("SimplePreference.prefText -> ${SimplePreference(this@KreferenceSampleActivity).prefText}\n")
         }.toString()
 
+        /**
+         * You can also get/set preference item Kreference Object. This is useful when the class is not
+         * a child of Context object or no Context object available in constructor.
+         *
+         * Kreference.get(context = this, key = "prefText", default = "I am Getter")
+         * Kreference.set(context = this, key = "prefText", value = "Now, I've become Setter")
+         *
+         */
+
         textView.text = message
 
     }
