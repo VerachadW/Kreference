@@ -37,13 +37,54 @@ public object Kreference {
     fun asFloat(context: Context, default: Float = 0f) : ReadWriteProperty<Any?, Float> = PreferenceDelegate(context, default)
     fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
     fun asDate(context: Context, default: Date = Date(0)) : ReadWriteProperty<Any?, Date?> = PreferenceDelegate(context, default)
-    fun asStringList(context: Context, default: Iterable<String>) : ReadWriteProperty<Any?, Iterable<String>> = PreferenceDelegate(context, default)
+
+    operator fun <T> get(context: Context, key: String, default: T): T {
+        val preference = getPreference(context, context.defaultKreferenceName)
+        return getPrefValue(preference, key, default)
+    }
+
+    operator fun <T> set(context: Context, key: String, value: T) {
+        val editor = getPreference(context, context.defaultKreferenceName).edit()
+        setPrefValue(editor, key, value)
+        editor.apply()
+    }
 
     fun clearAll(context: Context) {
-        val prefName = context.defaultKreferenceName
-        val editor = context.applicationContext.getSharedPreferences(prefName, Context.MODE_PRIVATE).edit()
+        val editor = getPreference(context, context.defaultKreferenceName).edit()
         editor.clear()
         editor.apply()
+    }
+
+    private fun getPreference(context: Context, name: String) =
+            context.applicationContext.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    @Suppress("unchecked_cast")
+    private fun <T> getPrefValue(preference: SharedPreferences, name: String, defaultValue: T): T {
+        return when (defaultValue) {
+            is String -> preference.getString(name, defaultValue) as T
+            is Float -> preference.getFloat(name, defaultValue) as T
+            is Int -> preference.getInt(name, defaultValue) as T
+            is Boolean -> preference.getBoolean(name, defaultValue) as T
+            is Long -> preference.getLong(name, defaultValue) as T
+            is Date -> {
+                val timestamp = preference.getLong(name, 0L)
+                Date(timestamp) as T
+            }
+            else -> {
+                throw IllegalStateException("Not supported Preference type.")
+            }
+        }
+    }
+
+    private fun <T> setPrefValue(editor: SharedPreferences.Editor, name: String, value: T) {
+        when (value) {
+            is String -> editor.putString(name, value)
+            is Float -> editor.putFloat(name, value)
+            is Int -> editor.putInt(name, value)
+            is Boolean -> editor.putBoolean(name, value)
+            is Long -> editor.putLong(name, value)
+            is Date -> editor.putLong(name, value.time)
+        }
     }
 
     private class PreferenceDelegate<T>(appContext: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
@@ -59,31 +100,13 @@ public object Kreference {
         private var value = defaultValue
 
         operator override fun get(thisRef: Any?, property: PropertyMetadata): T {
-            @Suppress("unchecked_cast")
-            when (value) {
-                is String -> value = sharedPreferences.getString(property.name, defaultValue as String) as T
-                is Float -> value = sharedPreferences.getFloat(property.name, defaultValue as Float) as T
-                is Int -> value = sharedPreferences.getInt(property.name, defaultValue as Int) as T
-                is Boolean -> value = sharedPreferences.getBoolean(property.name, defaultValue as Boolean) as T
-                is Long -> value = sharedPreferences.getLong(property.name, defaultValue as Long) as T
-                is Date -> {
-                    val timestamp = sharedPreferences.getLong(property.name, 0L)
-                    value = Date(timestamp) as T
-                }
-            }
+            value = getPrefValue(sharedPreferences, property.name, defaultValue)
             return value
         }
 
         operator override fun set(thisRef: Any?, property: PropertyMetadata, value: T) {
             val editor = sharedPreferences.edit()
-            when (value) {
-                is String -> editor.putString(property.name, value)
-                is Float -> editor.putFloat(property.name, value)
-                is Int -> editor.putInt(property.name, value)
-                is Boolean -> editor.putBoolean(property.name, value)
-                is Long -> editor.putLong(property.name, value)
-                is Date -> editor.putLong(property.name, value.time)
-            }
+            setPrefValue(editor, property.name, value)
             this.value = value
             editor.apply()
         }
