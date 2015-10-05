@@ -1,6 +1,19 @@
 #Kreference
 Preference as Properties for Kotlin Android.
 
+##Installation
+Add this line to your ```build.gradle```
+
+    compile "com.github.verachadw:kreference:0.3.0"
+    
+##Features
+- One line Preference item declaration
+- Null-Safety
+- Allow default value for preference item
+- Support traditional style to get/set preference item. This is useful when ```Context``` is 
+not available at class initialization
+- Support Non-Primitive type e.g. ```Date```
+
 ##Overview
 When you want to get/set a String in SharedPreference in Android. You need this bunch of code
 ```kotlin
@@ -48,16 +61,15 @@ Since Kreference used the variable's name as a key of preference item, You can e
      MyPref1.myTime == MyPref2.myTime
  ```
 
-##Features
-    - One line Preference item declaration
-    - Null-Safety
-    - Allow default value for preference item
-    - Support Non-Primitive type e.g. Date
+From some usecases, we want to use ```Kreference```, but the ```Context``` object cannot be accessible during class initialization( e.g. ```BoardCastReceiver```). Since we cannot decalre properties as local variable, ```Kreference``` provide get/set methods to obtain preference item easily. Here are some example.
+```kotlin
+    //Getter
+    Kreference.get<String>(context, "myString", "default-value")
     
-##Installation
-Add this line to your ```build.gradle```
-
-    compile "com.github.verachadw:kreference:0.2.1"
+    //Setter
+    Kreference.set<String>(context, "myString", "new-value")
+    
+```
 
 ##Need more features?
 Create an issue or send PR to me.
