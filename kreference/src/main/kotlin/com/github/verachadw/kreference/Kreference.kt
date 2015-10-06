@@ -67,7 +67,7 @@ public object Kreference {
             is Boolean -> preference.getBoolean(name, defaultValue) as T
             is Long -> preference.getLong(name, defaultValue) as T
             is Date -> {
-                val timestamp = preference.getLong(name, 0L)
+                val timestamp = preference.getLong(name, defaultValue.time)
                 Date(timestamp) as T
             }
             else -> {
