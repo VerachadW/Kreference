@@ -4,7 +4,7 @@ Preference as Properties for Kotlin Android.
 ##Installation
 Add this line to your ```build.gradle```
 
-    compile "com.github.verachadw:kreference:0.3.0"
+    compile "com.github.verachadw:kreference:0.3.1"
     
 ##Features
 - One line Preference item declaration
