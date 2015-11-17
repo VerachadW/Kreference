@@ -30,18 +30,18 @@ THE SOFTWARE.
  **/
 class PropertiesTester : BaseTester() {
 
-    val prefKey = "myPrefKey"
-    val mockProperty = PropertyMetadataImpl(prefKey)
+    val mockProperty = ""
 
     @Test
     fun test_GetFromPropertyAsString() {
         val value = "Test Property"
+
         preference.edit {
-            it.putString(prefKey, value)
+            it.putString(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asString(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(value, actual)
     }
@@ -51,11 +51,11 @@ class PropertiesTester : BaseTester() {
         val value = "Test Get Property"
 
         val property = Kreference.asString(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getString(prefKey, "")
+        val actual = preference.getString(PropertiesTester::mockProperty.name, "")
 
         assertEquals(value, actual)
     }
@@ -64,11 +64,11 @@ class PropertiesTester : BaseTester() {
     fun test_GetFromPropertyAsInt() {
         val value = 100
         preference.edit {
-            it.putInt(prefKey, value)
+            it.putInt(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asInt(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(value, actual)
     }
@@ -78,11 +78,11 @@ class PropertiesTester : BaseTester() {
         val value = 100
 
         val property = Kreference.asInt(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getInt(prefKey, 0)
+        val actual = preference.getInt(PropertiesTester::mockProperty.name, 0)
 
         assertEquals(value, actual)
     }
@@ -91,11 +91,11 @@ class PropertiesTester : BaseTester() {
     fun test_GetFromPropertyAsFloat() {
         val value = 100f
         preference.edit {
-            it.putFloat(prefKey, value)
+            it.putFloat(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asFloat(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(value, actual)
     }
@@ -105,11 +105,11 @@ class PropertiesTester : BaseTester() {
         val value = 100f
 
         val property = Kreference.asFloat(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getFloat(prefKey, 0f)
+        val actual = preference.getFloat(PropertiesTester::mockProperty.name, 0f)
 
         assertEquals(value, actual)
     }
@@ -118,11 +118,11 @@ class PropertiesTester : BaseTester() {
     fun test_GetFromPropertyAsBoolean() {
         val value = true
         preference.edit {
-            it.putBoolean(prefKey, value)
+            it.putBoolean(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asBoolean(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(value, actual)
     }
@@ -132,11 +132,11 @@ class PropertiesTester : BaseTester() {
         val value = true
 
         val property = Kreference.asBoolean(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getBoolean(prefKey, false)
+        val actual = preference.getBoolean(PropertiesTester::mockProperty.name, false)
 
         assertEquals(value, actual)
     }
@@ -145,11 +145,11 @@ class PropertiesTester : BaseTester() {
     fun test_GetFromPropertyAsLong() {
         val value = 100L
         preference.edit {
-            it.putLong(prefKey, value)
+            it.putLong(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asLong(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(value, actual)
     }
@@ -159,11 +159,11 @@ class PropertiesTester : BaseTester() {
         val value = 100L
 
         val property = Kreference.asLong(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getLong(prefKey, 0L)
+        val actual = preference.getLong(PropertiesTester::mockProperty.name, 0L)
 
         assertEquals(value, actual)
     }
@@ -172,11 +172,11 @@ class PropertiesTester : BaseTester() {
     fun test_GetFromPropertyAsDateObject() {
         val value = 123456L
         preference.edit {
-            it.putLong(prefKey, value)
+            it.putLong(PropertiesTester::mockProperty.name, value)
         }
 
         val property = Kreference.asDate(context = mockContext)
-        val actual = property.get(this, mockProperty)
+        val actual = property.getValue(this, PropertiesTester::mockProperty)
 
         assertEquals(Date(value), actual)
     }
@@ -186,11 +186,11 @@ class PropertiesTester : BaseTester() {
         val value = Date(123456L)
 
         val property = Kreference.asDate(context = mockContext)
-        property.set(this, mockProperty, value)
+        property.setValue(this, PropertiesTester::mockProperty, value)
 
-        assert(preference.contains(prefKey))
+        assert(preference.contains(PropertiesTester::mockProperty.name))
 
-        val actual = preference.getLong(prefKey, 0L)
+        val actual = preference.getLong(PropertiesTester::mockProperty.name, 0L)
 
         assertEquals(value.time, actual)
     }
