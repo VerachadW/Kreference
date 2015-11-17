@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import java.util.Date
 import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 /**
 The MIT License (MIT)
@@ -38,12 +39,12 @@ public object Kreference {
     fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
     fun asDate(context: Context, default: Date = Date(0)) : ReadWriteProperty<Any?, Date?> = PreferenceDelegate(context, default)
 
-    operator fun <T> get(context: Context, key: String, default: T): T {
+    fun <T> get(context: Context, key: String, default: T): T {
         val preference = getPreference(context, context.defaultKreferenceName)
         return getPrefValue(preference, key, default)
     }
 
-    operator fun <T> set(context: Context, key: String, value: T) {
+    fun <T> set(context: Context, key: String, value: T) {
         val editor = getPreference(context, context.defaultKreferenceName).edit()
         setPrefValue(editor, key, value)
         editor.apply()
@@ -89,6 +90,8 @@ public object Kreference {
 
     private class PreferenceDelegate<T>(appContext: Context, val defaultValue: T) : ReadWriteProperty<Any?, T> {
 
+        private var value = defaultValue
+
         val prefName by lazy(LazyThreadSafetyMode.NONE) {
             appContext.defaultKreferenceName
         }
@@ -97,14 +100,12 @@ public object Kreference {
             appContext.getSharedPreferences(prefName, Context.MODE_PRIVATE)
         }
 
-        private var value = defaultValue
-
-        operator override fun get(thisRef: Any?, property: PropertyMetadata): T {
+        override fun getValue(thisRef: Any?, property: KProperty<*>): T {
             value = getPrefValue(sharedPreferences, property.name, defaultValue)
             return value
         }
 
-        operator override fun set(thisRef: Any?, property: PropertyMetadata, value: T) {
+        override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
             val editor = sharedPreferences.edit()
             setPrefValue(editor, property.name, value)
             this.value = value
