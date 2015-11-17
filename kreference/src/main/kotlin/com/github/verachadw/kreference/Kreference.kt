@@ -39,12 +39,12 @@ public object Kreference {
     fun asBoolean(context: Context, default: Boolean = false) : ReadWriteProperty<Any?, Boolean> = PreferenceDelegate(context, default)
     fun asDate(context: Context, default: Date = Date(0)) : ReadWriteProperty<Any?, Date?> = PreferenceDelegate(context, default)
 
-    operator fun <T> get(context: Context, key: String, default: T): T {
+    fun <T> get(context: Context, key: String, default: T): T {
         val preference = getPreference(context, context.defaultKreferenceName)
         return getPrefValue(preference, key, default)
     }
 
-    operator fun <T> set(context: Context, key: String, value: T) {
+    fun <T> set(context: Context, key: String, value: T) {
         val editor = getPreference(context, context.defaultKreferenceName).edit()
         setPrefValue(editor, key, value)
         editor.apply()
