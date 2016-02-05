@@ -3,8 +3,8 @@ package com.github.verachadw.kreference
 import android.content.Context
 import android.content.SharedPreferences
 import java.util.Date
-import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
+import kotlin.properties.ReadWriteProperty
 
 /**
 The MIT License (MIT)
@@ -30,7 +30,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
 
-public object Kreference {
+object Kreference {
 
     fun asString(context: Context, default: String = "") : ReadWriteProperty<Any?, String> = PreferenceDelegate(context, default)
     fun asLong(context: Context, default: Long = 0L) : ReadWriteProperty<Any?, Long> = PreferenceDelegate(context, default)

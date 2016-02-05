@@ -8,7 +8,7 @@ import org.robolectric.res.FileFsFile
 /**
  * Created by verachadw on 10/3/2015 AD.
  */
-public class CustomRobolectricTestRunner(private val clazz: Class<*>) : RobolectricGradleTestRunner(clazz) {
+class CustomRobolectricTestRunner(private val clazz: Class<*>) : RobolectricGradleTestRunner(clazz) {
 
     override fun getAppManifest(config: Config): AndroidManifest {
         val appManifest = super.getAppManifest(config)
@@ -26,7 +26,7 @@ public class CustomRobolectricTestRunner(private val clazz: Class<*>) : Robolect
     }
 
     private fun getModuleRootPath(config: Config): String {
-        val moduleRoot = config.constants.javaClass.getResource("").toString()
+        val moduleRoot = config.constants.java.getResource("").toString()
         return moduleRoot.substring(0, moduleRoot.indexOf("/build"))
     }
 }

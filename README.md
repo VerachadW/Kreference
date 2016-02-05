@@ -1,4 +1,4 @@
-#Kreference
+#Kreference [![Build Status](https://travis-ci.org/VerachadW/Kreference.svg?branch=master)](https://travis-ci.org/VerachadW/Kreference)
 Preference as Properties for Kotlin Android.
 
 ##Installation
