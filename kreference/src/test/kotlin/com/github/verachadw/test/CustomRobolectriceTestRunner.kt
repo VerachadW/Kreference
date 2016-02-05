@@ -8,7 +8,7 @@ import org.robolectric.res.FileFsFile
 /**
  * Created by verachadw on 10/3/2015 AD.
  */
-public class CustomRobolectricTestRunner(private val clazz: Class<*>) : RobolectricGradleTestRunner(clazz) {
+class CustomRobolectricTestRunner(private val clazz: Class<*>) : RobolectricGradleTestRunner(clazz) {
 
     override fun getAppManifest(config: Config): AndroidManifest {
         val appManifest = super.getAppManifest(config)
