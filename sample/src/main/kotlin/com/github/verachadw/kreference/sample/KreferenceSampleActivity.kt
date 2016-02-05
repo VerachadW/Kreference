@@ -30,7 +30,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
-public class KreferenceSampleActivity : AppCompatActivity() {
+class KreferenceSampleActivity : AppCompatActivity() {
 
     private val textView by lazy {
         findViewById(R.id.textview) as TextView
@@ -46,7 +46,7 @@ public class KreferenceSampleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kreference_sample)
 
-        val message = StringBuilder {
+        val message = StringBuilder().apply {
             prefText = "Hello, Kreference"
             append("Before Change:\n")
             append("prefText -> $prefText\n")
