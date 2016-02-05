@@ -2,8 +2,9 @@ package com.github.verachadw.test
 
 import com.github.verachadw.kreference.Kreference
 import org.junit.Test
+import org.junit.Assert.*
 import java.util.*
-import kotlin.test.assertEquals
+import org.hamcrest.CoreMatchers.*
 
 /**
 The MIT License (MIT)
@@ -34,118 +35,118 @@ class GetTester : BaseTester(){
     val keyWithOutValue = "withOutValue"
 
     @Test
-    public fun test_GetPreferenceAsDefaultString() {
+    fun test_GetPreferenceAsDefaultString() {
         val default = "DefaultString"
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsString() {
+    fun test_GetPreferenceAsString() {
         val pValue = "Hello Kreference"
         preference.edit {
             it.putString(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, "")
 
-        assertEquals(pValue, kValue)
+        assertThat(pValue, `is`(kValue))
     }
 
     @Test
-    public fun test_GetPreferenceAsDefaultInt() {
+    fun test_GetPreferenceAsDefaultInt() {
         val default = 1000
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsInt() {
+    fun test_GetPreferenceAsInt() {
         val pValue = 10
         preference.edit {
             it.putInt(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, 0)
 
-        assertEquals(pValue, kValue)
+        assertThat(pValue, `is`(kValue))
     }
 
     @Test
-    public fun test_GetPreferenceAsDefaultFloat() {
+    fun test_GetPreferenceAsDefaultFloat() {
         val default = 1000f
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsFloat() {
+    fun test_GetPreferenceAsFloat() {
         val pValue = 10f
         preference.edit {
             it.putFloat(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, 0f)
 
-        assertEquals(pValue, kValue)
+        assertThat(pValue, `is`(kValue))
     }
 
     @Test
-    public fun test_GetPreferenceAsDefaultLong() {
+    fun test_GetPreferenceAsDefaultLong() {
         val default = 1000L
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsLong() {
+    fun test_GetPreferenceAsLong() {
         val pValue = 10L
         preference.edit {
             it.putLong(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, 0L)
 
-        assertEquals(pValue, kValue)
+        assertThat(pValue, `is`(kValue))
     }
 
     @Test
-    public fun test_GetPreferenceAsDefaultBoolean() {
+    fun test_GetPreferenceAsDefaultBoolean() {
         val default = true
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsBoolean() {
+    fun test_GetPreferenceAsBoolean() {
         val pValue = true
         preference.edit {
             it.putBoolean(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, false)
 
-        assertEquals(pValue, kValue)
+        assertThat(pValue, `is`(kValue))
     }
 
     @Test
-    public fun test_GetPreferenceAsDefaultDateObject() {
+    fun test_GetPreferenceAsDefaultDateObject() {
         val timestamp = 123456L
         val default = Date(timestamp)
         val value = Kreference.get(mockContext, keyWithOutValue, default)
 
-        assertEquals(default, value)
+        assertThat(default, `is`(value))
     }
 
     @Test
-    public fun test_GetPreferenceAsDateObject() {
+    fun test_GetPreferenceAsDateObject() {
         val pValue = System.currentTimeMillis()
         preference.edit {
             it.putLong(keyWithValue, pValue)
         }
         val kValue = Kreference.get(mockContext, keyWithValue, Date(0L))
 
-        assertEquals(kValue, Date(pValue))
+        assertThat(kValue, `is`(Date(pValue)))
     }
 
 }

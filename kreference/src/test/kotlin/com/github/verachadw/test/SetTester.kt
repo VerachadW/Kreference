@@ -2,8 +2,9 @@ package com.github.verachadw.test
 
 import com.github.verachadw.kreference.Kreference
 import org.junit.Test
+import org.hamcrest.CoreMatchers.*
+import org.junit.Assert.*
 import java.util.*
-import kotlin.test.assertEquals
 
 /**
 The MIT License (MIT)
@@ -28,7 +29,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
-public class SetTester : BaseTester() {
+class SetTester : BaseTester() {
 
     val prefKey = "myPrefKey"
 
@@ -41,7 +42,7 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getString(prefKey, "")
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -53,7 +54,7 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getInt(prefKey, 0)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -65,7 +66,7 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getLong(prefKey, 0L)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -77,7 +78,7 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getFloat(prefKey, 0f)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -89,7 +90,7 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getBoolean(prefKey, false)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -101,6 +102,6 @@ public class SetTester : BaseTester() {
 
         val actual = preference.getLong(prefKey, 0L)
 
-        assertEquals(value, Date(actual))
+        assertThat(value, `is`(Date(actual)))
     }
 }

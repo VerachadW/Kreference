@@ -26,7 +26,7 @@ public class CustomRobolectricTestRunner(private val clazz: Class<*>) : Robolect
     }
 
     private fun getModuleRootPath(config: Config): String {
-        val moduleRoot = config.constants.javaClass.getResource("").toString()
+        val moduleRoot = config.constants.java.getResource("").toString()
         return moduleRoot.substring(0, moduleRoot.indexOf("/build"))
     }
 }

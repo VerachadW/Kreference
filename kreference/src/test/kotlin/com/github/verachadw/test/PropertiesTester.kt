@@ -2,8 +2,9 @@ package com.github.verachadw.test
 
 import com.github.verachadw.kreference.Kreference
 import org.junit.Test
+import org.junit.Assert.*
+import org.hamcrest.CoreMatchers.*
 import java.util.*
-import kotlin.test.assertEquals
 
 /**
 The MIT License (MIT)
@@ -43,7 +44,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asString(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -57,7 +58,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getString(PropertiesTester::mockProperty.name, "")
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -70,7 +71,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asInt(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -84,7 +85,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getInt(PropertiesTester::mockProperty.name, 0)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -97,7 +98,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asFloat(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -111,7 +112,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getFloat(PropertiesTester::mockProperty.name, 0f)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -124,7 +125,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asBoolean(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -138,7 +139,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getBoolean(PropertiesTester::mockProperty.name, false)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -151,7 +152,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asLong(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -165,7 +166,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getLong(PropertiesTester::mockProperty.name, 0L)
 
-        assertEquals(value, actual)
+        assertThat(value, `is`(actual))
     }
 
     @Test
@@ -178,7 +179,7 @@ class PropertiesTester : BaseTester() {
         val property = Kreference.asDate(context = mockContext)
         val actual = property.getValue(this, PropertiesTester::mockProperty)
 
-        assertEquals(Date(value), actual)
+        assertThat(Date(value), `is`(actual))
     }
 
     @Test
@@ -192,7 +193,7 @@ class PropertiesTester : BaseTester() {
 
         val actual = preference.getLong(PropertiesTester::mockProperty.name, 0L)
 
-        assertEquals(value.time, actual)
+        assertThat(value.time, `is`(actual))
     }
 
 }

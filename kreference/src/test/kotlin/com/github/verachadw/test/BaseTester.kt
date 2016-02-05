@@ -35,19 +35,19 @@ THE SOFTWARE.
  **/
 @RunWith(CustomRobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = intArrayOf(21))
-public abstract class BaseTester {
+abstract class BaseTester {
 
     lateinit var mockContext: Context
     lateinit var preference: SharedPreferences
 
     @Before
-    public fun setUp() {
+    fun setUp() {
         mockContext = RuntimeEnvironment.application.applicationContext
         preference = mockContext.getSharedPreferences(mockContext.defaultKreferenceName, Context.MODE_PRIVATE)
     }
 
     @After
-    public fun tearDown() {
+    fun tearDown() {
         preference.edit().clear().apply()
     }
 
