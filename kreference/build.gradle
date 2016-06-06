@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/VerachadW/Kreference'
     gitUrl = 'https://github.com/VerachadW/Kreference.git'
 
-    libraryVersion = '0.6.0'
+    libraryVersion = '0.7.0'
 
     developerId = 'verachadw'
     developerName = 'Verachad Wongsawangtham'
@@ -27,7 +27,7 @@ ext {
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 15
@@ -50,7 +50,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:$android_lib_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     testCompile "junit:junit:$junit_version"
     testCompile("org.robolectric:robolectric:$robolectric_version"){
