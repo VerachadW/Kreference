@@ -96,7 +96,7 @@ object Kreference {
             appContext.defaultKreferenceName
         }
 
-        protected val sharedPreferences by lazy(LazyThreadSafetyMode.NONE) {
+        val sharedPreferences by lazy(LazyThreadSafetyMode.NONE) {
             appContext.getSharedPreferences(prefName, Context.MODE_PRIVATE)
         }
 
