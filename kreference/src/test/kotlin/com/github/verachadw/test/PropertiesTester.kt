@@ -196,4 +196,18 @@ class PropertiesTester : BaseTester() {
         assertThat(value.time, `is`(actual))
     }
 
+    @Test
+    fun test_ClearAllProperty() {
+        val value = Date(123456L)
+
+        val property = Kreference.asDate(context = mockContext)
+        property.setValue(this, PropertiesTester::mockProperty, value)
+
+        assert(preference.contains(PropertiesTester::mockProperty.name))
+
+        Kreference.clearAll(mockContext)
+
+        assertTrue(!preference.contains(PropertiesTester::mockProperty.name))
+    }
+
 }
