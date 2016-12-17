@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 
 ext {
     publish_version = '0.7.0'
-
 }
 
 android {

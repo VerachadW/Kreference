@@ -1,21 +1,31 @@
 language: android
-
 android:
   components:
-    - tools
-    - build-tools-23.0.3
-    - android-23
-    - extra-android-support
-    - extra-android-m2repository
+  - tools
+  - build-tools-25.0.2
+  - android-25
+  - extra-android-support
+  - extra-android-m2repository
+  - extra-google-m2repository
   licenses:
-    - android-sdk-license-.+
-
+  - android-sdk-license-.+
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 cache:
   directories:
-    - $HOME/.gradle
-
+  - "$HOME/.gradle"
 script:
-  - ./gradlew test
+- "./gradlew test"
+env:
+  matrix:
+  - secure: oAIhKrDN2nGtOET08L1h9U7ZVd6k6rUdQTcAzEdHLZPq/fGCdv8UO+ySDHN7DltgBKLj/Fg7ZsSQmbq96SQkS14rh8Epv2fSb74vawzEiTPY0ADGI1b3PenTZRIpIW6pEnVM8Rm3iG920Ylbe3ka2+nIXfI9a3YV4acSxXJt+vrU/0NEo6DXGzBuzEBJFZcCLxxb+UeGYgSTeQf/QDPzLASTiiIUhNkqKEfNkKNj4K8zDM9lgNn4BajEJOJs8E9iqEx0om//S3JsfiL8G4LxCk0Ho6gWhZxmsQClOV91BCP3FFWN4uPB+3CdYYBY8J6CO2CpNsQ/MgCx9C0+8CFjfuIE9TKLixBP/zAt36Kn7SyITsetzPIMhKJBnXTeaoKrPmAyQuE+qWRE04NPkvwUWrzPGiGfKm3vHmfFI3EtMOi2+0/E+/NT7Ecl7ovYrVMT9Iuhbz+TX2uNG6DcVfIVmUoeXWnABdUhZqnVzhVsz+zHUw8NVwcft8i9IhK+IWmlQXKz+dz1aZVg9ogZuDUvkPLY7sF6Nw/VoUo9ttSFkYV3B7hEi0DNW4Ewqc06yci+zpbp1Nge/zc0T58ybtz89Id0P4wpK8FMB5eIk3HoESCL6AgfcF1t37pti+Eo9LYnpwQQzVn3SaLePY6/VxtFZKyAjXfDAX+XNuogmeP2JPM=
+  - secure: FLyom2+Bvqny/HOuz+IcAKLlsSdRJAIRNYfWj0hOxKfXOXdNJzi1511QMJK7mkP/8H2CYZtozY07wqPLzLwc9HBwYasLcEXi0oTpF9fW8swk+s6Jg7kvfwyO2zNKGDsJmCCJ0qGWxDt2oNyuiSxH3XOJ4VCeYaqwareIvUnd9/1+nfXKngmp/pi9zZRiy6LCD6eMerdf7JOiFl5bQHLl4VMYvB7o1qIYXPrL4fQw6ILurQqIJEKnaYfgLnpx3ZPbOahWCQoi2dyB9YC0z3kVMLXcSutCrnAl0Aw1BoGCI1op1mp/ku38RrHPXbSqT0XB+/an+ywVwRL/TVK3py8RdvWB6qN4OCqLN99jFTXzWdow7tolhJ9XJRlbQQM79JHKXCqcY84ITbFhYHx+tyPSK5HNx7nd0pV7/Neza1hfJEXus953VCFRarmS8ZKTpmcIjbvH8Dr0E4lxtTmmVLvsRQ4vKZPmW317s21dqCMjs9kn42TLF+SrtM8z7SwAovZyCxKMbI1L+DGoO2k3DGycd5QaxPmpDvPqzPDqg2Eqsp7r+/D8fev6BASuhS5togO3sO8Lh+ryNCgzr3HGFq0KNacvhwWhi74G0H576/bcCvT2BNLu2P3repn7gmctvRuo7kSMZL+UDJXt5uNKVBgbPoI3j8ytZ+3lbb4kfJasTu8=
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: ./gradlew build bintrayUpload -PdryRun=false
+  on:
+    branch: master
+    tags: true
+
