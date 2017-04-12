@@ -6,14 +6,14 @@ buildscript {
     }
     ext {
         build_tools_version='25.0.2'
-        kotlin_version='1.0.5-2'
+        kotlin_version='1.1.1'
         android_lib_version='25.1.0'
         junit_version='4.12'
         robolectric_version='3.0'
         bintray_plugin_version = '0.3.4'
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.novoda:bintray-release:$bintray_plugin_version"
         // NOTE: Do not place your application dependencies here; they belong
