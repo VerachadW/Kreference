@@ -9,7 +9,7 @@ buildscript {
         kotlin_version='1.1.1'
         android_lib_version='25.1.0'
         junit_version='4.12'
-        robolectric_version='3.0'
+        robolectric_version='3.3.2'
         bintray_plugin_version = '0.3.4'
     }
     dependencies {

@@ -35,7 +35,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
 @RunWith(RobolectricTestRunner::class)
-@Config(packageName = "com.github.verachadw", constants = BuildConfig::class, sdk = intArrayOf(21))
+@Config(constants = BuildConfig::class, sdk = intArrayOf(21))
 abstract class BaseTester {
 
     lateinit var mockContext: Context
