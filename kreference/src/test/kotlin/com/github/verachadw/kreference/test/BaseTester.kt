@@ -1,4 +1,4 @@
-package com.github.verachadw.test
+package com.github.verachadw.kreference.test
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,6 +7,7 @@ import com.github.verachadw.kreference.defaultKreferenceName
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 
@@ -33,7 +34,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  **/
-@RunWith(CustomRobolectricTestRunner::class)
+@RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = intArrayOf(21))
 abstract class BaseTester {
 

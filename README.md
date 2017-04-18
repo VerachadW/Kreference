@@ -1,12 +1,12 @@
-#Kreference [![Build Status](https://travis-ci.org/VerachadW/Kreference.svg?branch=master)](https://travis-ci.org/VerachadW/Kreference)
+# Kreference [![Build Status](https://travis-ci.org/VerachadW/Kreference.svg?branch=master)](https://travis-ci.org/VerachadW/Kreference)
 Preference as Properties for Kotlin Android.
 
-##Installation
+## Installation
 Add this line to your ```build.gradle```
 
     compile "com.github.verachadw:kreference:0.7.0"
     
-##Features
+## Features
 - One line Preference item declaration
 - Null-Safety
 - Allow default value for preference item
@@ -14,7 +14,7 @@ Add this line to your ```build.gradle```
 not available at class initialization
 - Support Non-Primitive type e.g. ```Date```
 
-##Overview
+## Overview
 When you want to get/set a String in SharedPreference in Android. You need this bunch of code
 ```kotlin
     object PreferenceHelper {
@@ -71,10 +71,10 @@ From some usecases, we want to use ```Kreference```, but the ```Context``` objec
     
 ```
 
-##Need more features?
+## Need more features?
 Create an issue or send PR to me.
 
-##Licensce
+## Licensce
 The MIT License (MIT)
 
 Copyright (c) 2015 Verachad Wongsawangtham

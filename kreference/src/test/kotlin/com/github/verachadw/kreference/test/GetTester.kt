@@ -1,6 +1,7 @@
-package com.github.verachadw.test
+package com.github.verachadw.kreference.test
 
 import com.github.verachadw.kreference.Kreference
+import com.github.verachadw.kreference.test.BaseTester
 import org.junit.Test
 import org.junit.Assert.*
 import java.util.*
