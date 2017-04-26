@@ -15,7 +15,9 @@ cache:
   directories:
   - "$HOME/.gradle"
 script:
-- "./gradlew test"
+  - ./gradlew check jacocoTestReport
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 env:
   matrix:
   - secure: oAIhKrDN2nGtOET08L1h9U7ZVd6k6rUdQTcAzEdHLZPq/fGCdv8UO+ySDHN7DltgBKLj/Fg7ZsSQmbq96SQkS14rh8Epv2fSb74vawzEiTPY0ADGI1b3PenTZRIpIW6pEnVM8Rm3iG920Ylbe3ka2+nIXfI9a3YV4acSxXJt+vrU/0NEo6DXGzBuzEBJFZcCLxxb+UeGYgSTeQf/QDPzLASTiiIUhNkqKEfNkKNj4K8zDM9lgNn4BajEJOJs8E9iqEx0om//S3JsfiL8G4LxCk0Ho6gWhZxmsQClOV91BCP3FFWN4uPB+3CdYYBY8J6CO2CpNsQ/MgCx9C0+8CFjfuIE9TKLixBP/zAt36Kn7SyITsetzPIMhKJBnXTeaoKrPmAyQuE+qWRE04NPkvwUWrzPGiGfKm3vHmfFI3EtMOi2+0/E+/NT7Ecl7ovYrVMT9Iuhbz+TX2uNG6DcVfIVmUoeXWnABdUhZqnVzhVsz+zHUw8NVwcft8i9IhK+IWmlQXKz+dz1aZVg9ogZuDUvkPLY7sF6Nw/VoUo9ttSFkYV3B7hEi0DNW4Ewqc06yci+zpbp1Nge/zc0T58ybtz89Id0P4wpK8FMB5eIk3HoESCL6AgfcF1t37pti+Eo9LYnpwQQzVn3SaLePY6/VxtFZKyAjXfDAX+XNuogmeP2JPM=

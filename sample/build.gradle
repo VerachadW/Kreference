@@ -21,6 +21,11 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
  }
 
 dependencies {

@@ -25,13 +25,11 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
     }
-    jacoco {
-        version "0.7.1.201405082137"
+    android {
+        lintOptions {
+            abortOnError false
+        }
     }
-}
-
-jacoco {
-    toolVersion "0.7.1.201405082137"
 }
 
 task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
